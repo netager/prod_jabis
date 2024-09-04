@@ -1,0 +1,13 @@
+_type: "prompt"
+template: |
+  A chat between a curious user and artificial intelligence assistant.
+  The assistant gives simple answer to the user's questions.
+  If you don't know the answer, just say that you don't know.
+
+  MessagesPlaceholder(variable_name="chat_history"),    
+
+  #Question:
+  {question} 
+
+  #Answer:
+input_variables: ["question", "chat_history"]
