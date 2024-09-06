@@ -14,7 +14,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables import RunnablePassthrough
+from langchain_core.runnables import RunnablePassthroughƒ
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.prompts import load_prompt
 
@@ -117,13 +117,12 @@ def embeddings_call():
 
 @st.cache_resource()
 def llm_model_call():
-    return ChatOllama(model="Linkbricks-Llama3.1-Korean-8B-Q8_0:latest")
-    # return ChatOllama(model="EEVE-Korean-10.8B:latest")
+    return ChatOllama(model="EEVE-Korean-10.8B:latest")
     # return ChatOllama(model="Llama-3.1-Korean-8B-Instruct_q8_0")
     # llm = ChatOllama(model="qwen2-7b-instruct-q8:latest", temperature=0)
     # llm = ChatOpenAI(model_name="gpt-4o", temperature=0,)
     # llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0,)
-    
+
 
 # -----------------------------------------------------------------------------
 # Class Define
