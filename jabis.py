@@ -15,7 +15,6 @@ st.set_page_config(
 # -----------------------
 # model_name_path = '../embedding_model/KR-SBERT-V40K-klueNLI-augSTS'
 model_name_path = "../HUGGING_FACE_MODEL/BAAI_bge-m3"
-
 @st.cache_resource()
 def embeddings_call():
     return HuggingFaceEmbeddings(
@@ -28,7 +27,7 @@ def embeddings_call():
         # cache_folder='../embedding/model',
     )
 
-embeddings = embeddings_call()
+embeddings = embeddings_call() 
 
 @st.cache_data
 def get_base64(bin_file):
@@ -62,34 +61,44 @@ col1, col2, col3, col4 = st.columns([0.7, 0.1, 0.1, 0.1], gap= "small", vertical
 # col1, col2, col3, col4 = st.columns([0.7, 0.1, 0.1, 0.1], gap= "small")
 # col1.image("./images/jbb-logo.png", use_column_width="auto" )
 col1.image("./images/jbb-logo.png")
-col2.write('Overview')
-col3.write('Team')
-col4.write('About')
+col3.page_link("./pages/team.py", label="Team", icon="👬")
+col4.page_link("./pages/about.py", label="About", icon="💡")
+# col3.write('Team')
+# col4.write('About')
 
-main_col1, main_col2 = st.columns([0.6, 0.4], gap="large", vertical_alignment="center")
+main_col1, main_col2 = st.columns([0.6, 0.4], gap="large", vertical_alignment="top")
 # main_col1, main_col2 = st.columns([0.6, 0.4], gap="large")
 
 # with main_col1:
 #     st.image("./images/jbb-building2.webp", use_column_width="always")
 
 with main_col2:
-    st.markdown("# Welcome to Jabis!")
     st.markdown(
     """
+    # Welcome to Jabis!
+
+    
     ## Get answers. 
     ## Find inspiration.
     ## Be more productive.
-   
-    Free to use. Easy to try. Just ask and Jabis can help with writing, learning, brainstorming, and more.
+
+    Free to use. Easy to try. Just ask and Jabis can help with writing, learning, brainstorming, and more.    
+
+    전북은행 AI 자비스는 여러분에게 도움을 드리기 위해 최선을 다하겠습니다.
     """
     )
 
-    b_col1, b_col2 , b_col3 = st.columns([0.3, 0.4, 0.2], vertical_alignment="center")
+
+    b_col1, b_col2 , b_col3, b_col4 = st.columns([0.2, 0.3, 0.3, 0.2], vertical_alignment="center")
     # b_col1, b_col2 , b_col3 = st.columns([0.3, 0.4, 0.2])
 
-    start_now = b_col2.button("Jabis Start Now", type="primary")    
+    start_now = b_col2.button("Chating", type="primary")    
+    train_now = b_col3.button("Training", type="primary")    
     if start_now:
         st.switch_page('./pages/jabis_chat.py')
+    
+    if train_now:
+        st.switch_page('./pages/jabis_train.py')
 
 
 # 향후 개발 되었으면 하는 기능

@@ -42,10 +42,7 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 def get_cur_time():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-
 LOG_STATUS = "CONSOLE"
-
-
 def log_writer(LOG_STATUS, message):
     if LOG_STATUS == "CONSOLE_MONITOR":
         st.write(f"[{get_cur_time()}] {message}")
@@ -63,7 +60,7 @@ load_dotenv()
 
 # LangSmith를 이용하여 LLM 추적
 # -------------------------
-logging.langsmith("PROD_LLM", set_enable=True)  # enable
+# logging.langsmith("PROD_LLM", set_enable=True)  # enable
 
 
 # session id 가져오기
@@ -101,7 +98,6 @@ def get_session_history(session_ids):
 # Caching Embedding Model
 # -----------------------
 model_name_path = "../HUGGING_FACE_MODEL/BAAI_bge-m3"
-
 @st.cache_resource()
 def embeddings_call():
     return HuggingFaceEmbeddings(
@@ -272,7 +268,9 @@ def create_chain(prompt_type, user_input):
             [
                 (
                     "system",
-                    "A chat between a curious user and artificial intelligence assistant. The assistant gives simple answer to the user's questions.",
+                    """You are Jabis of Jeonbuk Bank. A chat between a curious user and artificial intelligence assistant.
+                     The assistant gives simple answer to the user's questions."""
+                    # Answer in Englist and Korean.""",
                     # "A chat between a curious user and artificial intelligence assistant. The assistant gives helpfule, detailed, and polite answer to the user's questions."
                     # "당신은 친절한 20년차 은행원이면서 IT 전문가인 JABIS 입니다. 다음의 질문에 답변해 주세요.",
                 ),
