@@ -113,7 +113,8 @@ def embeddings_call():
 
 @st.cache_resource()
 def llm_model_call():
-    return ChatOllama(model="linkbricks-llama3.1-korean-8b.gguf:latest")
+    return ChatOllama(model="Linkbricks-Llama3.1-Korean-8B-Q8_0:latest")
+    # return ChatOllama(model="linkbricks-llama3.1-korean-8b.gguf:latest")
     # return ChatOllama(model="EEVE-Korean-10.8B:latest")
     # return ChatOllama(model="Llama-3.1-Korean-8B-Instruct_q8_0")
     # llm = ChatOllama(model="qwen2-7b-instruct-q8:latest", temperature=0)

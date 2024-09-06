@@ -84,7 +84,7 @@ with main_col2:
 
     Free to use. Easy to try. Just ask and Jabis can help with writing, learning, brainstorming, and more.    
 
-    전북은행 AI 자비스는 여러분의 생산성 향상을 위해 최선을 다하겠습니다.
+    전북은행 AI 자비스는 여러분에게 도움을 드리기 위해 최선을 다하겠습니다.
     """
     )
 
@@ -92,8 +92,8 @@ with main_col2:
     b_col1, b_col2 , b_col3, b_col4 = st.columns([0.2, 0.3, 0.3, 0.2], vertical_alignment="center")
     # b_col1, b_col2 , b_col3 = st.columns([0.3, 0.4, 0.2])
 
-    start_now = b_col2.button("Chating Now", type="primary")    
-    train_now = b_col3.button("Training Now", type="primary")    
+    start_now = b_col2.button("Chating", type="primary")    
+    train_now = b_col3.button("Training", type="primary")    
     if start_now:
         st.switch_page('./pages/jabis_chat.py')
     
