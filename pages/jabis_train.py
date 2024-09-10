@@ -55,12 +55,16 @@ def embeddings_call():
 
 def vectorize_file(uploaded_fiels):
     for uploaded_file in uploaded_files:
-        file_content = uploaded_file.read()
-        file_path = f"{TRAIN_FILES}/{uploaded_file.name}"
-        with open(file_path, "wb") as f:
-            f.write(file_content)
+        with open(os.path.join(TRAIN_FILES, uploaded_file.name), "wb") as f:
+            f.write(uploaded_file.getbuffer())    
+
+        # file_content = uploaded_file.read()
+        # file_path = f"{TRAIN_FILES}/{uploaded_file.name}"
+        # with open(file_path, "wb") as f:
+        #     f.write(file_content)
 
         # 단계 1: 문서 로드(Load Documents)
+        file_path = f"{TRAIN_FILES}/{uploaded_file.name}"
         st.markdown(f'[{get_cur_time()}] {uploaded_file.name}을 읽고 있습니다.')
         loader = PyPDFLoader(file_path)
         docs = loader.load()
@@ -107,12 +111,11 @@ def vectorize_file(uploaded_fiels):
         # 벡터스토어를 생성합니다.
         # vectorstore = FAISS.from_documents(documents=split_documents, embedding=embeddings)
         # vectorstore = Chroma.from_documents(documents=split_documents, embedding=embeddings, persist_directory="./Chroma_DB/chroma_bank_law_db",
-        Chroma.from_documents(documents=split_documents, embedding=embeddings_model,
-                                collection_name="bank_law_case",)
-
         # Chroma.from_documents(documents=split_documents, embedding=embeddings_model,
-        #                         persist_directory="../Chroma_DB/chroma_bank_law_db",
         #                         collection_name="bank_law_case",)
+        Chroma.from_documents(documents=split_documents, embedding=embeddings_model,
+                                persist_directory="../Chroma_DB/chroma_bank_law_db",
+                                collection_name="bank_law_case",)
         st.markdown(f'---')
 
 

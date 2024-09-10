@@ -478,7 +478,7 @@ if user_input:
                     }
                     url_with_params = base_url + "?" + urlencode(params)
 
-                    linked_docs += f"👉 [{params['title']}]({url_with_params}) ~ <pages : {params['page']}> <{round(search_result[1],3)}>\n\n"
+                    linked_docs += f"👉 [{params['title']}]({url_with_params}) [pages]: {params['page']} [{round(search_result[1],3)}]\n\n"
 
             ai_answer = ai_answer + "\n\n 📖 관련 문서 보기\n\n" + linked_docs
             container.markdown(ai_answer, unsafe_allow_html=True)
